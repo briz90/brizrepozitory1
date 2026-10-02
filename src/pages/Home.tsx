@@ -14,30 +14,55 @@ export default function Home({ onOpenForm }: HomeProps) {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-100 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-medium mb-8">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-              Работаем с 2010 года
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Text */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-medium mb-8">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                Работаем с 2010 года
+              </div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                Ваш бизнес растёт —{' '}
+                <span className="text-emerald-600">вы спокойны</span>{' '}
+                за финансы
+              </h1>
+
+              <p className="text-xl md:text-2xl text-gray-500 mb-10 leading-relaxed">
+                Берём на себя всю бухгалтерию, чтобы вы занимались тем, что действительно важно — развитием бизнеса
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 lg:justify-start justify-center">
+                <button onClick={onOpenForm} className="btn-primary text-xl">
+                  Получить расчёт
+                </button>
+                <Link to="/services" className="btn-secondary text-xl text-center">
+                  Наши услуги
+                </Link>
+              </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Ваш бизнес растёт —{' '}
-              <span className="text-emerald-600">вы спокойны</span>{' '}
-              за финансы
-            </h1>
-
-            <p className="text-xl md:text-2xl text-gray-500 mb-10 leading-relaxed">
-              Берём на себя всю бухгалтерию, чтобы вы занимались тем, что действительно важно — развитием бизнеса
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={onOpenForm} className="btn-primary text-xl">
-                Получить расчёт
-              </button>
-              <Link to="/services" className="btn-secondary text-xl text-center">
-                Наши услуги
-              </Link>
+            {/* Right - Image */}
+            <div className="relative max-w-lg mx-auto lg:max-w-none">
+              <div className="absolute -inset-4 bg-gradient-to-br from-emerald-200 to-emerald-100 rounded-3xl blur-2xl opacity-50"></div>
+              <img
+                src="https://image.qwenlm.ai/generated-images/6739a03a-2aa5-4976-b75a-ca622decb033/_result.png"
+                alt="Спокойный бизнесмен в современном офисе"
+                className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
+              />
+              {/* Floating badge */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-emerald-100">
+                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-bold text-gray-900">500+ клиентов</div>
+                  <div className="text-sm text-gray-500">доверяют нам</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
