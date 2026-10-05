@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Что такое Claude Code",
+    "description": "Знакомство с ИИ-ассистентом, который работает прямо в терминале: объясняет код, пишет файлы и запускает команды. С чего начать и как не испугаться консоли.",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/overview",
+    "tags": ["Claude Code", "старт", "терминал"]
+  },
+  {
+    "title": "Установка за 5 минут",
+    "description": "Пошаговая установка Claude Code: Node.js, одна команда в терминале, вход в аккаунт. Разбираем частые ошибки пути и прав на Windows, macOS и Linux.",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/setup",
+    "tags": ["Claude Code", "установка", "старт"]
+  },
+  {
+    "title": "Первый проект: страница-визитка",
+    "description": "Практика для новичка: просим Claude Code создать простую HTML-страницу о себе. Учимся ставить маленькие задачи и проверять результат по шагам.",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/common-workflows",
+    "tags": ["проекты", "практика", "старт"]
+  },
+  {
+    "title": "Топ-10 промптов для новичка",
+    "description": "Готовые формулировки запросов: «объясни этот код», «найди ошибку», «добавь тесты». Копируй, подставляй свой контекст и получай полезный ответ с первого раза.",
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "tags": ["промпты", "Claude Code"]
+  },
+  {
+    "title": "Как писать промпты, которые работают",
+    "description": "Формула хорошего запроса: роль + задача + контекст + формат ответа. Показываем на примерах, как одна фраза меняет весь результат работы нейросети.",
+    "url": "https://www.anthropic.com/engineering/claude-prompt-engineering-best-practices",
+    "tags": ["промпты", "обучение"]
+  },
+  {
+    "title": "7 ошибок новичков с ИИ",
+    "description": "Слишком общие задачи, вера коду без проверки, отсутствие контекста, гигантские промпты... Разбор типичных граблей и способов их обойти.",
+    "url": "https://www.anthropic.com/news/claude-code",
+    "tags": ["ошибки", "советы", "Claude Code"]
+  },
+  {
+    "title": "Проект №2: консольная игра",
+    "description": "Учимся итеративной разработке: сначала «камень-ножницы-бумага», потом счёт, потом уровни. Каждое изменение — отдельный маленький запрос к Claude Code.",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/common-workflows",
+    "tags": ["проекты", "практика", "Python"]
+  },
+  {
+    "title": "Режимы работы: plan, accept edits, авто-запуск",
+    "description": "Claude Code умеет сначала планировать, потом выполнять. Объясняем безопасные режимы, чтобы ИИ ничего не сломал, пока вы учитесь.",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/common-workflows",
+    "tags": ["Claude Code", "безопасность", "советы"]
+  },
+  {
+    "title": "Читаем чужой код с помощью ИИ",
+    "description": "Скачали открытый проект и не понимаете, с чего начинать? Стратегия вопросов: от общей схемы к конкретным функциям, вместе с Claude Code.",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/tutorials",
+    "tags": ["советы", "обучение", "Claude Code"]
+  },
+  {
+    "title": "Проект №3: свой CLI-дайджест",
+    "description": "Финальный мини-проект: программа на Python, которая хранит заметки и ссылки. От идеи до работающего кода за один вечер с ИИ-напарником.",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/overview",
+    "tags": ["проекты", "Python", "практика"]
+  }
+]

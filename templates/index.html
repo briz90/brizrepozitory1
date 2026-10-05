@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- index.html — главная страница «AI-дайджест для новичков» -->
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-дайджест для новичков · Claude Code</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Декоративные «пятна» на фоне -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Шапка -->
+  <header class="hero">
+    <p class="hero-kicker">// не бойся нейросетей — используй их</p>
+    <h1 class="hero-title">AI&#8209;дайджест<br>для <span class="gradient-word">новичков</span></h1>
+    <p class="hero-sub">Карточки про <b>Claude Code</b>: первые проекты, удачные промпты
+      и типичные ошибки. Выбирай тему — открывай материал.</p>
+
+    <!-- Поиск -->
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="search" class="search-input"
+             placeholder="Поиск: промпты, ошибки, проекты…" autocomplete="off">
+      <button id="clear-search" class="clear-btn" title="Очистить поиск" hidden>✕</button>
+    </div>
+
+    <!-- Фильтр по тегам -->
+    <div id="tags" class="tags"><!-- теги появятся из script.js --></div>
+
+    <p class="counter" id="counter"><!-- сколько карточек показано --></p>
+  </header>
+
+  <!-- Сетка карточек: данные приходят из Flask (content.json) -->
+  <main>
+    <section id="cards" class="cards">
+      {% for card in cards %}
+      <article class="card"
+               data-title="{{ card.title | lower }}"
+               data-desc="{{ card.description | lower }}"
+               data-tags="{{ card.tags | join('|') | lower }}">
+        <span class="card-num">{{ '%02d' % (loop.index) }}</span>
+        <h2 class="card-title">{{ card.title }}</h2>
+        <p class="card-desc">{{ card.description }}</p>
+        <ul class="card-tags">
+          {% for tag in card.tags %}
+          <li class="chip">{{ tag }}</li>
+          {% endfor %}
+        </ul>
+        <a class="card-btn" href="{{ card.url }}" target="_blank" rel="noopener">
+          Открыть материал <span class="arrow">→</span>
+        </a>
+      </article>
+      {% endfor %}
+    </section>
+
+    <!-- Сообщение, если ничего не найдено -->
+    <p id="empty" class="empty" hidden>Ничего не нашлось 🤔 Попробуй другой запрос</p>
+  </main>
+
+  <footer class="footer">
+    Сделано на Flask + HTML + CSS + JS · данные из <code>content.json</code>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
