@@ -1,0 +1,337 @@
+/* ============================================================
+   style.css — «AI-дайджест для новичков»
+   Тёмный фон, неоновые цвета, плавные анимации, адаптивность.
+   ============================================================ */
+
+:root {
+  --bg: #0b0b14;            /* почти чёрный с синевой */
+  --card: #14142a;          /* фон карточки */
+  --text: #eae6ff;          /* основной текст */
+  --muted: #9a94c0;         /* приглушённый текст */
+  --violet: #8b5cf6;        /* фиолетовый акцент */
+  --pink: #f472b6;          /* розовый акцент */
+  --cyan: #22d3ee;          /* голубой акцент */
+  --lime: #a3e635;          /* лаймовый акцент */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---------- Декоративные пятна на фоне (плавают) ---------- */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: .35;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 14s ease-in-out infinite alternate;
+}
+.blob-1 { width: 420px; height: 420px; background: var(--violet); top: -120px; left: -100px; }
+.blob-2 { width: 360px; height: 360px; background: var(--pink);   bottom: -120px; right: -80px; animation-delay: -5s; }
+.blob-3 { width: 300px; height: 300px; background: var(--cyan);   top: 40%; left: 60%; opacity: .18; animation-delay: -9s; }
+
+@keyframes float {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(60px, -40px) scale(1.15); }
+}
+
+/* ---------- Шапка ---------- */
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 20px 24px;
+  text-align: center;
+}
+
+.hero-kicker {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--lime);
+  font-size: 14px;
+  letter-spacing: .06em;
+  margin-bottom: 14px;
+  animation: rise .7s ease both;
+}
+
+.hero-title {
+  font-size: clamp(38px, 7vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  animation: rise .7s .08s ease both;
+}
+
+.gradient-word {
+  background: linear-gradient(90deg, var(--violet), var(--pink), var(--cyan));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.hero-sub {
+  color: var(--muted);
+  font-size: clamp(15px, 2.2vw, 18px);
+  max-width: 620px;
+  margin: 18px auto 30px;
+  animation: rise .7s .16s ease both;
+}
+.hero-sub b { color: var(--text); }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Поиск ---------- */
+.search-wrap {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto 22px;
+  animation: rise .7s .22s ease both;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--cyan);
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 48px 15px 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(139, 92, 246, .4);
+  background: rgba(20, 20, 42, .8);
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+  outline: none;
+  transition: border-color .3s, box-shadow .3s;
+}
+.search-input::placeholder { color: var(--muted); }
+
+.search-input:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, .18), 0 0 28px rgba(244, 114, 182, .25);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(139, 92, 246, .25);
+  color: var(--text);
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background .3s;
+}
+.clear-btn:hover { background: var(--violet); }
+
+/* ---------- Теги-фильтры ---------- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+  animation: rise .7s .28s ease both;
+}
+
+.tag {
+  border: 1px solid rgba(154, 148, 192, .35);
+  background: rgba(20, 20, 42, .7);
+  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.tag:hover {
+  color: var(--text);
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+.tag.active {
+  background: linear-gradient(90deg, var(--violet), var(--pink));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(139, 92, 246, .45);
+}
+
+.counter {
+  margin-top: 18px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- Сетка карточек ---------- */
+.cards {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 26px auto 0;
+  padding: 0 20px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid rgba(139, 92, 246, .22);
+  border-radius: 22px;
+  padding: 26px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  /* появление снизу вверх — запускает JS классом .show */
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .55s ease, transform .55s ease,
+              border-color .3s ease, box-shadow .3s ease;
+}
+
+.card.show { opacity: 1; transform: none; }
+.card.hide { display: none; }
+
+/* косой градиентный «луч» сверху карточки */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -30%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(139, 92, 246, .16), transparent);
+  transform: skewX(-18deg);
+  transition: left .6s ease;
+  pointer-events: none;
+}
+.card:hover::before { left: 110%; }
+
+.card:hover {
+  border-color: var(--pink);
+  box-shadow: 0 18px 44px rgba(244, 114, 182, .18), 0 0 0 1px rgba(244, 114, 182, .3);
+  transform: translateY(-6px);
+}
+
+.card-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: var(--cyan);
+  letter-spacing: .12em;
+}
+
+.card-title {
+  font-size: 21px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.card-desc {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.chip {
+  font-size: 12px;
+  font-family: "JetBrains Mono", monospace;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, .12);
+  border: 1px solid rgba(34, 211, 238, .35);
+  color: var(--cyan);
+}
+
+/* Кнопка «Открыть материал» */
+.card-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--violet), var(--pink));
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.card-btn .arrow { transition: transform .25s ease; }
+
+.card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(139, 92, 246, .5);
+}
+.card-btn:hover .arrow { transform: translateX(5px); }
+
+/* ---------- Пусто / подвал ---------- */
+.empty {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--muted);
+  font-size: 18px;
+  padding: 40px 20px 60px;
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 26px 20px 40px;
+}
+.footer code {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--lime);
+}
+
+/* ---------- Телефон ---------- */
+@media (max-width: 600px) {
+  .hero { padding-top: 48px; }
+  .cards { grid-template-columns: 1fr; gap: 16px; }
+  .tag { padding: 7px 13px; font-size: 13px; }
+}
+
+/* Пользователь просит меньше анимаций — отключаем декор */
+@media (prefers-reduced-motion: reduce) {
+  .blob, .gradient-word { animation: none; }
+  .card { transition: opacity .2s ease; }
+}
